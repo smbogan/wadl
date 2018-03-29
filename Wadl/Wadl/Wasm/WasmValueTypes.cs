@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Wadl
+namespace Wadl.Wasm
 {
-    public class Class1
+    public enum WasmValueTypes
     {
+        i32,
+        i64,
+        f32,
+        f64
     }
 }

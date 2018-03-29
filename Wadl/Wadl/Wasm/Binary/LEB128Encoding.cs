@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Wadl.Binary
+namespace Wadl.Wasm.Binary
 {
     public static class LEB128Encoding
     {

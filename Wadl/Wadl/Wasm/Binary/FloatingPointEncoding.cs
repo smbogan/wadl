@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Wadl.Binary
+namespace Wadl.Wasm.Binary
 {
     public static class FloatingPointEncoding
     {
@@ -12,13 +12,13 @@ namespace Wadl.Binary
 
         public static IEnumerable<byte> EncodeF32(float value)
         {
-            byte[] EncodeF32AsBytes(float value)
+            byte[] EncodeF32AsBytes(float v)
             {
                 byte[] bytes = new byte[sizeof(float)];
 
                 unsafe
                 {
-                    byte* b = (byte*)&value;
+                    byte* b = (byte*)&v;
 
                     for (int i = 0; i < sizeof(float); i++)
                     {
@@ -30,9 +30,9 @@ namespace Wadl.Binary
                 return bytes;
             }
 
-        var bytesx = EncodeF32AsBytes(value);
-            foreach (var b in bytesx)
-                yield return b;
+            var bytesx = EncodeF32AsBytes(value);
+                foreach (var b in bytesx)
+                    yield return b;
         }
     }
 }

@@ -41,11 +41,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Binary\FloatingPointEncoding.cs" />
-    <Compile Include="Binary\LEB128Encoding.cs" />
-    <Compile Include="Binary\WaOpCode.cs" />
-    <Compile Include="Class1.cs" />
+    <Compile Include="Wasm\Binary\FloatingPointEncoding.cs" />
+    <Compile Include="Wasm\Binary\LEB128Encoding.cs" />
+    <Compile Include="Wasm\ElementType.cs" />
+    <Compile Include="Wasm\FunctionType.cs" />
+    <Compile Include="Wasm\GlobalType.cs" />
+    <Compile Include="Wasm\IEncodable.cs" />
+    <Compile Include="Wasm\IEncoder.cs" />
+    <Compile Include="Wasm\Instructions\Block.cs" />
+    <Compile Include="Wasm\Instructions\If.cs" />
+    <Compile Include="Wasm\Instructions\Instruction.cs" />
+    <Compile Include="Wasm\Instructions\Loop.cs" />
+    <Compile Include="Wasm\Instructions\Nop.cs" />
+    <Compile Include="Wasm\Instructions\Unreachable.cs" />
+    <Compile Include="Wasm\Limits.cs" />
+    <Compile Include="Wasm\MemoryType.cs" />
+    <Compile Include="Wasm\Module.cs" />
+    <Compile Include="Wasm\Binary\WaOpCode.cs" />
+    <Compile Include="Wasm\Mutability.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Wasm\TableType.cs" />
+    <Compile Include="Wasm\WasmResultTypes.cs" />
+    <Compile Include="Wasm\WasmValueTypes.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
