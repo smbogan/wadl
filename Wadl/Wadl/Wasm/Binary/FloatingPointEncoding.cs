@@ -10,29 +10,29 @@ namespace Wadl.Wasm.Binary
     {
         
 
-        public static IEnumerable<byte> EncodeF32(float value)
-        {
-            byte[] EncodeF32AsBytes(float v)
-            {
-                byte[] bytes = new byte[sizeof(float)];
+        //public static IEnumerable<byte> EncodeF32(float value)
+        //{
+        //    byte[] EncodeF32AsBytes(float v)
+        //    {
+        //        byte[] bytes = new byte[sizeof(float)];
 
-                unsafe
-                {
-                    byte* b = (byte*)&v;
+        //        unsafe
+        //        {
+        //            byte* b = (byte*)&v;
 
-                    for (int i = 0; i < sizeof(float); i++)
-                    {
-                        bytes[i] = *b;
-                        b++;
-                    }
-                }
+        //            for (int i = 0; i < sizeof(float); i++)
+        //            {
+        //                bytes[i] = *b;
+        //                b++;
+        //            }
+        //        }
 
-                return bytes;
-            }
+        //        return bytes;
+        //    }
 
-            var bytesx = EncodeF32AsBytes(value);
-                foreach (var b in bytesx)
-                    yield return b;
-        }
+        //    var bytesx = EncodeF32AsBytes(value);
+        //        foreach (var b in bytesx)
+        //            yield return b;
+        //}
     }
 }
