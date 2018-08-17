@@ -41,9 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="Wasm\Binary\FloatingPointEncoding.cs" />
     <Compile Include="Wasm\Binary\LEB128Encoding.cs" />
     <Compile Include="Wasm\ElementType.cs" />
+    <Compile Include="Wasm\Exceptions\UnexpectedEndOfProgramException.cs" />
+    <Compile Include="Wasm\Exceptions\UnexpectedException.cs" />
     <Compile Include="Wasm\FunctionType.cs" />
     <Compile Include="Wasm\GlobalType.cs" />
     <Compile Include="Wasm\IEncodable.cs" />
@@ -211,6 +214,7 @@
     <Compile Include="Wasm\Instructions\I64xor.cs" />
     <Compile Include="Wasm\Instructions\If.cs" />
     <Compile Include="Wasm\Instructions\Instruction.cs" />
+    <Compile Include="Wasm\Instructions\InstructionFactory.cs" />
     <Compile Include="Wasm\Instructions\Loop.cs" />
     <Compile Include="Wasm\Instructions\MemoryInstruction.cs" />
     <Compile Include="Wasm\Instructions\Nop.cs" />

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Wadl.Wasm.Exceptions;
 
 namespace Wadl.Wasm.Binary
 {
@@ -48,6 +50,27 @@ namespace Wadl.Wasm.Binary
             }
         }
 
+        public static uint DecodeUInt32(Stream stream)
+        {
+            uint result = 0;
+            int shift = 0;
+            while (true)
+            {
+                var read = stream.ReadByte();
+
+                if (read == -1)
+                    throw new UnexpectedEndOfProgramException();
+
+                var @byte = (byte)read;
+                result |= (uint)(@byte & 0x7F) << shift;
+                if ((0x80 & @byte) == 0)
+                    break;
+                shift += 7;
+            }
+
+            return result;
+        }
+
         public static uint DecodeUInt32(IEnumerable<byte> bytes)
         {
             var iterator = bytes.GetEnumerator();
@@ -63,6 +86,32 @@ namespace Wadl.Wasm.Binary
                     break;
                 shift += 7;
             }
+
+            return result;
+        }
+
+        public static int DecodeInt32(Stream stream)
+        {
+            int result = 0;
+            int shift = 0;
+            var size = sizeof(int) * 8;
+            byte @byte;
+            do
+            {
+                var read = stream.ReadByte();
+
+                if (read == -1)
+                    throw new UnexpectedEndOfProgramException();
+
+                @byte = (byte)read;
+                result |= ((@byte & 0x7F) << shift);
+                shift += 7;
+            } while ((0x80 & @byte) != 0);
+
+            /* sign bit of byte is second high order bit (0x40) */
+            if ((shift < size) && ((0x40 & @byte) > 0))
+                /* sign extend */
+                result |= (~0 << shift);
 
             return result;
         }
